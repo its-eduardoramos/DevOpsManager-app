@@ -1,0 +1,38 @@
+:root {
+  --bg-main: #202123; /* Main background color */
+  --bg-card: #2d2d2d; /* Tables and containers */
+  --border-color: #3e3f4b; /* Borders */
+
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+
+  /* Texts */
+  --text-main: #ececf1; /* For main texts */
+  --text-muted: #c5c5d2; /* For secondary texts */
+
+  /* Status */
+  --status-success: #2e7d32;
+  --status-warning: #b76e00;
+  --status-danger: #c62828;
+}
+
+body{
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+:root{
+  --sidebar-max-height: 100vh;
+  --main-content-min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  :root{
+    --sidebar-max-height: 300px;
+    --main-content-min-width: 600px;
+  }
+  #layout{
+    flex-direction: column;
+  }
+
+}
