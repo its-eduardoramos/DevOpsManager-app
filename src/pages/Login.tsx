@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "../hooks/useForm";
 import { ShowToast } from "../components/ShowToast";
 import { InputField } from "../components/InputField";
 import { Paper } from "../components/Paper";
 import { Button } from "../components/Button";
-import { useNavigate, type NavigateFunction } from "react-router-dom";
 import { AuthContext, type Auth } from "../context/AuthContext";
 
 export interface User {

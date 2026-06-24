@@ -111,6 +111,7 @@ export const ResourceModal = ({
               gap: "15px",
             }}
           >
+            {/* Name */}
             <InputField
               label="Name:"
               value={form.name}
@@ -119,6 +120,7 @@ export const ResourceModal = ({
               onChange={handleChange}
               errorMessage={errors.name}
             />
+            {/* Type */}
             <InputField
               label="Type:"
               value={form.type}
@@ -127,6 +129,7 @@ export const ResourceModal = ({
               onChange={handleChange}
               errorMessage={errors.type}
             />
+            {/* IP Address */}
             <InputField
               label="Ip Address:"
               value={form.ipAddress}
@@ -135,6 +138,7 @@ export const ResourceModal = ({
               onChange={handleChange}
               errorMessage={errors.ipAddress}
             />
+            {/* Status */}
             <SelectField
               label={"Status:"}
               value={form.status}

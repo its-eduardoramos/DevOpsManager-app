@@ -1,12 +1,14 @@
 import { theme } from "../constants/theme";
 
 interface InputFieldProps {
-  label: string;
+  label?: string;
   value: string;
   type: string;
   name: string;
+  placeholder?: string;
+  style?: React.CSSProperties;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 export const InputField = ({
@@ -14,6 +16,8 @@ export const InputField = ({
   value,
   type,
   name,
+  placeholder,
+  style,
   onChange,
   errorMessage,
 }: InputFieldProps): React.ReactNode => {
@@ -22,6 +26,7 @@ export const InputField = ({
       maxWidth: "100%",
       display: "flex",
       flexDirection: "column",
+      gap:"5px"
     },
     input: {
       padding: "8px",
@@ -46,8 +51,9 @@ export const InputField = ({
         value={value}
         type={type}
         name={name}
+        placeholder={placeholder}
         onChange={onChange}
-        style={customStyles.input}
+        style={{ ...customStyles.input, ...style}}
       />
       {errorMessage && (
         <span style={customStyles.errorMessage}>{errorMessage}</span>

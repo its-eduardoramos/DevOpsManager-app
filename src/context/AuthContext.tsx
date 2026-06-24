@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, type Context } from "react";
 import type { User } from "../pages/Login";
-import { loginServcie } from "../services/login.service";
+import { accountService } from "../services/account.service";
 import {
   authInitialState,
   authReducer,
@@ -35,7 +35,7 @@ export const AuthProvider = ({
 
   const login = async (credentials: User): Promise<any> => {
     try {
-      const response = await loginServcie.access(credentials);
+      const response = await accountService.access(credentials);
       if (!response.ok) {
         throw new Error(response.statusText || "Invalid credentials");
       }

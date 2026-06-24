@@ -110,7 +110,7 @@ export const ShowToast = ({
         <div>{typeColors[type].icon}</div>
         <div>
           <p>{title}</p>
-          <p>{message}</p>
+          <p style={{ whiteSpace: "pre-wrap"}}>{message}</p>
           <div style={customStyles.close} onClick={onClose}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
