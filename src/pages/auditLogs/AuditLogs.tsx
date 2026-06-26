@@ -64,7 +64,6 @@ export const AuditLogs = (): React.ReactNode => {
       .then((response: ApiResponse<AuditLog[]>) => {
         const auditLogs: AuditLog[] | undefined = response.data;
         if (auditLogs) {
-          console.log(auditLogs);
           setAuditLogs(
             auditLogs.map((auditLog: AuditLog) => ({
               ...auditLog,

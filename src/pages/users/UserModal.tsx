@@ -11,38 +11,53 @@ import type { ApiResponse } from "../../interfaces/ApiResponse";
 
 interface UserModalProps {
   openModal: boolean;
+  userData: User | null;
   onClose: (action?: string, error?: ApiResponse<null>) => void;
   close: () => void;
 }
 
 export const UserModal = ({
   openModal,
+  userData,
   onClose,
   close,
 }: UserModalProps): React.ReactNode => {
   const formInitialValues: User = {
-    userName: "",
-    password: "",
-    email: "",
-    roles: "",
+    userName: userData?.userName || "",
+    password: userData?.password || "",
+    email: userData?.email || "",
+    roles: userData?.roles || "",
   };
   const { form, errors, handleChange, isValid } = useForm(formInitialValues);
+  // It stores the toast info
   const [toastInfo, setToastInfo] = useState<ShowToastProps | null>(null);
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (isValid()) {
-      await accountService
-        .register(form)
-        .then((response: ApiResponse<User>) => {
-          onClose("add");
-          close();
-        })
-        .catch((e: ApiResponse<null>) => {
-          onClose("error", e);
-          close();
-        });
+      if (userData) {
+        await accountService
+          .update(form)
+          .then((response: ApiResponse<User>) => {
+            onClose("update");
+            close();
+          })
+          .catch((e: ApiResponse<null>) => {
+            onClose("error", e);
+            close();
+          });
+      } else {
+        await accountService
+          .register(form)
+          .then((response: ApiResponse<User>) => {
+            onClose("add");
+            close();
+          })
+          .catch((e: ApiResponse<null>) => {
+            onClose("error", e);
+            close();
+          });
+      }
     } else {
       setToastInfo({
         seconds: 5,
@@ -66,7 +81,9 @@ export const UserModal = ({
             width: "100%",
           }}
         >
-          <h3 style={{ textAlign: "center" }}>Create new user</h3>
+          <h3 style={{ textAlign: "center" }}>
+            {userData ? "Edit" : "Create"} new user
+          </h3>
           <form
             onSubmit={handleSubmit}
             style={{

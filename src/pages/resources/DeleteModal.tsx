@@ -17,7 +17,7 @@ export const DeleteModal = ({
 }: DeleteModalProps): React.ReactNode => {
   const handleDelete = async (): Promise<void> => {
     await resourceService
-      .remove(id)
+      .delete(id)
       .then((res: any) => {
         onClose("delete", res);
       })

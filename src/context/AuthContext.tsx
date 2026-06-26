@@ -37,12 +37,13 @@ export const AuthProvider = ({
     try {
       const response = await accountService.access(credentials);
       if (!response.ok) {
-        throw new Error(response.statusText || "Invalid credentials");
+        throw new Error(response.message || "Invalid credentials");
       }
-      const data = await response.json();
-      localStorage.setItem("user_info", JSON.stringify(data));
-      dispatch({ type: "LOGIN_SUCCEEDED", payload: data });
-
+      const data = await response.data;
+      if (data) {
+        localStorage.setItem("user_info", JSON.stringify(data));
+        dispatch({ type: "LOGIN_SUCCEEDED", payload: data });
+      }
       return data;
     } catch (e: any) {
       dispatch({ type: "LOGIN_FAILED", payload: e });
