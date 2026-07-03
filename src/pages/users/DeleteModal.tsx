@@ -19,7 +19,7 @@ export const DeleteModal = ({
   const handleDelete = async (): Promise<void> => {
     await accountService
       .delete(userId)
-      .then((response: ApiResponse<null>) => {
+      .then(() => {
         onClose("delete");
       })
       .catch((e: ApiResponse<null>) => {

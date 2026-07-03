@@ -38,7 +38,7 @@ export const UserModal = ({
       if (userData) {
         await accountService
           .update(form)
-          .then((response: ApiResponse<User>) => {
+          .then(() => {
             onClose("update");
             close();
           })
@@ -49,7 +49,7 @@ export const UserModal = ({
       } else {
         await accountService
           .register(form)
-          .then((response: ApiResponse<User>) => {
+          .then(() => {
             onClose("add");
             close();
           })

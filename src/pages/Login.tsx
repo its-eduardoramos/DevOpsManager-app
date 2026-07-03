@@ -44,7 +44,7 @@ export default function Login(): React.ReactNode {
 
     if (isValid()) {
       try {
-        const data = await authContext?.login(form);
+        await authContext?.login(form);
       } catch (error: any) {
         setToastInfo({
           seconds: 5,

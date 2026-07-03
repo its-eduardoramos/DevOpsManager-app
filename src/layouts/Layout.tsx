@@ -30,7 +30,6 @@ export const Layout = (): React.ReactNode => {
         style={{
           border: "1px solid" + theme.borderColor,
           minWidth: "250px",
-          // maxWidth: "100%",
           backgroundColor: theme.menu.bg,
         }}
       >
@@ -40,8 +39,6 @@ export const Layout = (): React.ReactNode => {
       <div
         style={{
           flex: 1,
-          // minWidth: "400px", //AGREGAR UN MEDIA PARA QUE CUANDO LA RESOLUCION SEA MENOR, QUITAR ESTE MINWIDTH
-          // padding: "10px",
           border: "1px solid" + theme.borderColor,
           borderLeft: " none",
           display: "flex",
@@ -50,7 +47,6 @@ export const Layout = (): React.ReactNode => {
         <div
           style={{
             flex: 1,
-            // border: "1px solid yellow",
             display: "flex",
             flexDirection: "column",
           }}
